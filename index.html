@@ -14,7 +14,7 @@
     --bg:#f0f2f5;
     --panel:#ffffff;
     --text:#1a1a1a;
-    --primary:#cc0000; /* Red Cross Red for urgency */
+    --primary:#cc0000;
     --primary-dark:#990000;
     --border:#e4e6eb;
     --muted:#65676b;
@@ -180,7 +180,9 @@
   .contact-item{
     background:#f8f9fa; padding:16px; border-radius:12px;
     margin-bottom:10px; display:flex; align-items:center; gap:16px;
+    cursor:pointer; transition: background 0.2s;
   }
+  .contact-item:active { background:#e9ecef; }
   .contact-value{ font-family: monospace; font-size: 15px; font-weight: 600; color: #333; user-select: all; }
   .copy-hint { font-size: 10px; color: var(--primary); margin-left: auto; font-weight: bold; text-transform: uppercase; }
 
@@ -247,7 +249,7 @@
     </div>
     <div class="quick-actions" id="quickActions"></div>
     <div style="text-align:center; margin-top:15px; font-size:12px; color:#999;" id="lastUpdated">
-      Updates: 2025-11-28
+      Updates: 2025-11-29
     </div>
   </div>
 
@@ -280,7 +282,7 @@ const texts = {
     installTitle: '安裝 App', installDesc: '離線使用，更穩定', installBtn: '安裝',
     contact: '聯絡方式', details: '詳細資訊', close: '關閉',
     copy: '複製', copied: '已複製',
-    lastUpdate: '最後更新：2025年11月28日'
+    lastUpdate: '最後更新：2025年11月29日'
   },
   en: {
     title: 'Wang Fuk Court Relief', subtitle: 'Support Information Hub',
@@ -289,7 +291,7 @@ const texts = {
     installTitle: 'Install App', installDesc: 'Works offline, faster access', installBtn: 'Install',
     contact: 'Contact Info', details: 'Details', close: 'Close',
     copy: 'COPY', copied: 'COPIED',
-    lastUpdate: 'Last Updated: Nov 28, 2025'
+    lastUpdate: 'Last Updated: Nov 29, 2025'
   },
   tl: {
     title: 'Tulong sa Sunog', subtitle: 'Wang Fuk Court Relief',
@@ -298,7 +300,7 @@ const texts = {
     installTitle: 'I-install', installDesc: 'Gumagana offline', installBtn: 'I-install',
     contact: 'Kontak', details: 'Detalye', close: 'Isara',
     copy: 'KOPYA', copied: 'KINOPYA',
-    lastUpdate: 'Huling Update: Nov 28, 2025'
+    lastUpdate: 'Huling Update: Nov 29, 2025'
   },
   id: {
     title: 'Bantuan Kebakaran', subtitle: 'Wang Fuk Court Relief',
@@ -307,13 +309,14 @@ const texts = {
     installTitle: 'Instal App', installDesc: 'Akses offline cepat', installBtn: 'Instal',
     contact: 'Kontak', details: 'Detail', close: 'Tutup',
     copy: 'SALIN', copied: 'DISALIN',
-    lastUpdate: 'Terakhir Diperbarui: 28 Nov 2025'
+    lastUpdate: 'Terakhir Diperbarui: 29 Nov 2025'
   }
 };
 
 const resources = {
   zh: [
-    { icon:'💰', title:'政府支援基金', desc:'直接捐款協助受災居民', keywords:['捐款','錢','基金'], contacts:[{l:'港幣',v:'中國銀行 012-875-2-190159-7'}]},
+    { icon:'💰', title:'政府支援基金', desc:'直接捐款協助受災居民', keywords:['捐款','錢','基金'], contacts:[{l:'港幣',v:'中國銀行 012-875-2-190159-7'},{l:'其他貨幣',v:'中國銀行 012-875-2-190160-7'}]},
+    { icon:'🎓', title:'教大臨時支援中心', desc:'為受影響學生及家庭提供支援', keywords:['教大', 'eduhk', '學生', '大學'], contacts:[{ l: '地點', v: '教大 E 座室內運動場' }, { l: '開放時間', v: '08:30 - 18:30' }]},
     { icon:'❤️', title:'紅十字會', desc:'緊急心理支援及物資', keywords:['紅十字會','急救'], contacts:[{l:'FPS 轉數快',v:'164279317'},{l:'查詢',v:'relief@redcross.org.hk'}]},
     { icon:'🏠', title:'臨時住宿', desc:'為受災家庭提供居所', keywords:['住','酒店',' shelter'], contacts:[{l:'新鴻基地產',v:'提供160間免費酒店房'},{l:'ImpactHK',v:'5341 6670'}]},
     { icon:'📦', title:'物資捐贈', desc:'衣物、毛毯、日用品', keywords:['物資','衫','食物'], info:['⚠️ 多個收集點已爆滿，請先查詢'], contacts:[{l:'政府熱線',v:'9213 2388'}]},
@@ -322,6 +325,7 @@ const resources = {
   ],
   en: [
     { icon:'💰', title:'Govt Relief Fund', desc:'Direct donation to victims', keywords:['donate','money','fund'], contacts:[{l:'HKD Account',v:'Bank of China 012-875-2-190159-7'}]},
+    { icon:'🎓', title:'EdUHK Support Centre', desc:'Support for affected students/families', keywords:['eduhk', 'student', 'university'], contacts:[{ l: 'Location', v: 'EdUHK Block E Sports Hall' }, { l: 'Hours', v: '08:30 - 18:30' }]},
     { icon:'❤️', title:'Red Cross', desc:'Emergency & Psych Support', keywords:['red cross','help'], contacts:[{l:'FPS ID',v:'164279317'},{l:'Email',v:'relief@redcross.org.hk'}]},
     { icon:'🏠', title:'Temporary Housing', desc:'Shelter for families', keywords:['housing','hotel','shelter'], contacts:[{l:'SHKP',v:'160 Free Hotel Rooms'},{l:'ImpactHK',v:'5341 6670'}]},
     { icon:'📦', title:'Donate Supplies', desc:'Clothes, Blankets', keywords:['supplies','food'], info:['⚠️ Many collection points full'], contacts:[{l:'Govt Hotline',v:'9213 2388'}]},
@@ -329,7 +333,6 @@ const resources = {
     { icon:'🚨', title:'Emergency Lines', desc:'Casualty & Mental Health', keywords:['help','emergency'], contacts:[{l:'Casualty',v:'1878 999'},{l:'Mental Health',v:'18111'},{l:'SWD',v:'2343 2255'}]}
   ]
 };
-// Map Tagalog/Indonesian to English content for now (can be translated fully later)
 resources.tl = resources.en;
 resources.id = resources.en;
 
@@ -351,7 +354,7 @@ const dom = {
   lastUpdated: document.getElementById('lastUpdated')
 };
 
-// Auto-detect language
+// Auto-detect
 const userLang = navigator.language || navigator.userLanguage;
 if(userLang.includes('en')) lang = 'en';
 else if(userLang.includes('zh')) lang = 'zh';
@@ -368,12 +371,10 @@ function renderApp() {
   dom.searchInput.placeholder = t.placeholder;
   dom.lastUpdated.innerText = t.lastUpdate;
   
-  // Install Banner Texts
   document.getElementById('installTitle').innerText = t.installTitle;
   document.getElementById('installDesc').innerText = t.installDesc;
   document.getElementById('installBtn').innerText = t.installBtn;
 
-  // Render Quick Actions
   dom.quickActions.innerHTML = resources[lang].map(r => `
     <div class="quick-btn" onclick="showDetail('${r.title}')">
       <div class="quick-icon">${r.icon}</div>
@@ -381,13 +382,11 @@ function renderApp() {
     </div>
   `).join('');
   
-  // Update Lang Menu
   document.querySelectorAll('.lang-option').forEach(el => {
     el.classList.toggle('active', el.dataset.lang === lang);
   });
 }
 
-// Search & Details
 function showDetail(title) {
   const item = resources[lang].find(r => r.title === title);
   if(!item) return;
@@ -403,10 +402,10 @@ function showDetail(title) {
     </div>
     ${item.info ? `<div style="background:#fff3cd; color:#856404; padding:10px; border-radius:8px; margin-bottom:15px; font-size:14px;">${item.info.join('<br>')}</div>` : ''}
     ${item.contacts.map(c => `
-      <div class="contact-item" onclick="copyText('${c.value}', this)">
+      <div class="contact-item" onclick="copyText('${c.v}', this)">
         <div style="flex:1">
           <div style="font-size:11px; color:#666; text-transform:uppercase;">${c.l}</div>
-          <div class="contact-value">${c.value}</div>
+          <div class="contact-value">${c.v}</div>
         </div>
         <div class="copy-hint">${texts[lang].copy}</div>
       </div>
@@ -452,7 +451,7 @@ document.querySelectorAll('.lang-option').forEach(opt => {
 });
 document.onclick = () => dom.langMenu.classList.remove('show');
 
-// Voice Recognition
+// Voice
 const VoiceObj = window.SpeechRecognition || window.webkitSpeechRecognition;
 if(VoiceObj) {
   const recognition = new VoiceObj();
@@ -470,15 +469,14 @@ if(VoiceObj) {
     dom.voiceStatus.innerText = "";
   };
   recognition.onresult = (e) => {
-    const transcript = e.results[0][0].transcript;
-    dom.searchInput.value = transcript;
+    dom.searchInput.value = e.results[0][0].transcript;
     dom.searchInput.dispatchEvent(new Event('input'));
   };
 } else {
   document.getElementById('voiceBtn').style.display = 'none';
 }
 
-// PWA Install
+// PWA
 let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
@@ -495,7 +493,6 @@ document.getElementById('installBtn').onclick = async () => {
 };
 document.getElementById('closeInstall').onclick = () => dom.installBanner.classList.remove('show');
 
-// Init
 if ('serviceWorker' in navigator) { navigator.serviceWorker.register('sw.js'); }
 renderApp();
 </script>
